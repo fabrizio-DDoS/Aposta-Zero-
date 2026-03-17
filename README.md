@@ -45,56 +45,20 @@ O sistema funciona como uma alternativa segura para pessoas que têm o hábito d
 ---
 
 ## 📂 Estrutura do Projeto
-'''
-apostazero/
-├── frontend/
-│   ├── index.html              # Landing page (missão + alertas)
-│   ├── pages/
-│   │   ├── dashboard.html      # Carteira virtual + resumo
-│   │   ├── mercados.html       # Lista de eventos Polymarket
-│   │   ├── apostar.html        # Tela de simulação de aposta
-│   │   ├── historico.html      # P&L simulado + "quanto você teria perdido"
-│   │   └── conscientizacao.html
-│   ├── css/
-│   │   ├── global.css
-│   │   ├── components.css      # Cards, botões, modais
-│   │   └── alerts.css          # Banners de conscientização
-│   └── js/
-│       ├── api.js              # Wrapper para o backend
-│       ├── auth.js             # Login / registro / JWT
-│       ├── mercados.js
-│       ├── aposta.js
-│       └── utils.js
+project/
 │
-├── backend/
-│   ├── app/
-│   │   ├── main.py             # Entry point FastAPI
-│   │   ├── database.py         # SQLAlchemy engine + session
-│   │   ├── models/
-│   │   │   ├── user.py
-│   │   │   ├── wallet.py
-│   │   │   ├── bet.py
-│   │   │   └── market_cache.py
-│   │   ├── schemas/            # Pydantic (validação request/response)
-│   │   │   ├── user.py
-│   │   │   ├── bet.py
-│   │   │   └── market.py
-│   │   ├── routes/
-│   │   │   ├── auth.py         # POST /auth/register, /auth/login
-│   │   │   ├── wallet.py       # GET /wallet, POST /wallet/reset
-│   │   │   ├── bets.py         # POST /bets, GET /bets, GET /bets/{id}
-│   │   │   └── markets.py      # GET /markets, GET /markets/{id}
-│   │   ├── services/
-│   │   │   ├── auth_service.py
-│   │   │   ├── wallet_service.py
-│   │   │   ├── bet_service.py
-│   │   │   └── polymarket_service.py  # Proxy + cache
-│   │   └── scheduler.py        # APScheduler jobs
-│   ├── requirements.txt
-│   └── .env
+├── app.py
+├── database.db
 │
-└── README.md
-'''
+├── /templates
+│ ├── index.html
+│ ├── login.html
+│ ├── register.html
+│ ├── market.html
+│
+├── /static
+│ ├── style.css
+│ ├── script.js
 
 ---
 

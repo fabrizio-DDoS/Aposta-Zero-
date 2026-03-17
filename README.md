@@ -45,6 +45,7 @@ O sistema funciona como uma alternativa segura para pessoas que têm o hábito d
 ---
 
 ## 📂 Estrutura do Projeto
+'''
 apostazero/
 ├── frontend/
 │   ├── index.html              # Landing page (missão + alertas)
@@ -93,7 +94,7 @@ apostazero/
 │   └── .env
 │
 └── README.md
-
+'''
 
 ---
 

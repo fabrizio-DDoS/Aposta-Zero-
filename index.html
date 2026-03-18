@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BetFree — Aposte Sem Perder Nada</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- WARNING BANNER -->
+  <div class="warning-banner" id="warningBanner">
+    <span class="warning-icon">⚠️</span>
+    <span><strong>Lembrete importante:</strong> Apostas de verdade causam perdas financeiras graves. Aqui você usa apenas moedas virtuais fictícias — sem dinheiro real envolvido.</span>
+    <button class="warning-close" onclick="document.getElementById('warningBanner').style.display='none'">✕</button>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <span class="logo-icon">◈</span>
+      <span class="logo-text">BetFree</span>
+      <span class="logo-badge">SEM DINHEIRO REAL</span>
+    </div>
+    <div class="nav-links">
+      <a href="#markets" class="nav-link">Mercados</a>
+      <a href="#how" class="nav-link">Como Funciona</a>
+      <a href="#awareness" class="nav-link nav-highlight">Conscientização</a>
+    </div>
+    <div class="nav-actions">
+      <div class="virtual-coins">
+        <span class="coin-icon">🪙</span>
+        <span id="userCoins">1.000</span>
+        <span class="coin-label">BFcoins</span>
+      </div>
+      <button class="btn-login" onclick="openModal('loginModal')">Entrar</button>
+      <button class="btn-register" onclick="openModal('registerModal')">Começar Grátis</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-tag">🇧🇷 Projeto de Conscientização Sobre Apostas</div>
+      <h1 class="hero-title">
+        Sinta a adrenalina.<br/>
+        <span class="hero-accent">Sem destruir sua vida.</span>
+      </h1>
+      <p class="hero-subtitle">
+        BetFree é a plataforma de previsão de mercados com moedas 100% virtuais e fictícias. 
+        Desenvolvida para quem quer parar de apostar dinheiro real, mas ainda sente o impulso.
+      </p>
+      <div class="hero-cta">
+        <button class="btn-primary" onclick="openModal('registerModal')">Criar Conta Gratuita</button>
+        <a href="#how" class="btn-ghost">Como funciona →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">R$ 0,00</span>
+          <span class="stat-label">Gasto real possível</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">1.000</span>
+          <span class="stat-label">BFcoins de boas-vindas</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">100%</span>
+          <span class="stat-label">Fictício e seguro</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="market-preview-card">
+        <div class="card-header">
+          <span class="card-tag">🔴 AO VIVO</span>
+          <span class="card-tag-right">Moedas Virtuais</span>
+        </div>
+        <div class="card-question">Lula termina o mandato em 2026?</div>
+        <div class="card-chart">
+          <div class="chart-bar">
+            <div class="bar-fill bar-yes" style="width: 62%">
+              <span>SIM</span>
+            </div>
+            <span class="bar-pct">62%</span>
+          </div>
+          <div class="chart-bar">
+            <div class="bar-fill bar-no" style="width: 38%">
+              <span>NÃO</span>
+            </div>
+            <span class="bar-pct">38%</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span>💰 2.340 BFcoins apostados</span>
+          <button class="btn-predict">Prever →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARENESS STRIP -->
+  <div class="awareness-strip">
+    <div class="awareness-ticker">
+      <div class="ticker-track">
+        <span>⚠️ No Brasil, mais de 30 milhões de pessoas apostam regularmente</span>
+        <span>🚨 Apostas online já afetam 1 em cada 5 famílias brasileiras</span>
+        <span>💔 Vício em apostas destrói relacionamentos, empregos e saúde mental</span>
+        <span>📉 A casa sempre ganha — em média, apostadores perdem 85% do que apostam</span>
+        <span>🆘 CVV: 188 — Ajuda para quem está sofrendo</span>
+        <span>⚠️ Aqui você usa APENAS moedas fictícias — não tem como perder dinheiro real</span>
+        <span>💡 BetFree é uma ferramenta de apoio, não um substituto para tratamento profissional</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARKETS -->
+  <section class="markets-section" id="markets">
+    <div class="section-header">
+      <div class="section-tag">MERCADOS ATIVOS</div>
+      <h2 class="section-title">Faça suas previsões</h2>
+      <p class="section-sub">Todos os mercados usam dados reais do Polymarket. As moedas são 100% virtuais.</p>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active" onclick="filterMarkets('todos', this)">Todos</button>
+      <button class="filter-btn" onclick="filterMarkets('politica', this)">🏛️ Política</button>
+      <button class="filter-btn" onclick="filterMarkets('economia', this)">📈 Economia</button>
+      <button class="filter-btn" onclick="filterMarkets('esporte', this)">⚽ Esportes</button>
+      <button class="filter-btn" onclick="filterMarkets('crypto', this)">₿ Cripto</button>
+    </div>
+
+    <div class="markets-grid" id="marketsGrid">
+      <!-- Cards injetados por JS -->
+    </div>
+
+    <div class="load-more-wrap">
+      <button class="btn-ghost-lg">Carregar mais mercados</button>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section" id="how">
+    <div class="how-bg"></div>
+    <div class="section-header">
+      <div class="section-tag">COMO FUNCIONA</div>
+      <h2 class="section-title">Simples, seguro e sem riscos</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-icon">🎁</div>
+        <h3>Crie sua conta grátis</h3>
+        <p>Cadastre-se e receba 1.000 BFcoins — a moeda virtual fictícia do BetFree. Sem cartão, sem depósito.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-icon">🔍</div>
+        <h3>Escolha um mercado</h3>
+        <p>Explore eventos reais de política, economia, esportes e mais. Dados integrados com Polymarket.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-icon">🪙</div>
+        <h3>Aposte BFcoins</h3>
+        <p>Use suas moedas fictícias para prever resultados. Nenhum centavo real está em jogo — nunca.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <div class="step-icon">📊</div>
+        <h3>Veja os resultados</h3>
+        <p>Acompanhe se sua previsão estava certa. Ganhe mais BFcoins e suba no ranking semanal.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARENESS SECTION -->
+  <section class="awareness-section" id="awareness">
+    <div class="awareness-content">
+      <div class="section-tag tag-red">⚠️ VERDADES SOBRE APOSTAS</div>
+      <h2 class="awareness-title">Por que criamos o BetFree?</h2>
+      <p class="awareness-intro">Porque o Brasil tem um problema sério com apostas — e ignorá-lo não ajuda ninguém.</p>
+
+      <div class="facts-grid">
+        <div class="fact-card fact-red">
+          <div class="fact-number">R$ 3.200</div>
+          <div class="fact-desc">Valor médio perdido por apostadores brasileiros por mês, segundo levantamentos de 2024</div>
+        </div>
+        <div class="fact-card fact-orange">
+          <div class="fact-number">72%</div>
+          <div class="fact-desc">Dos apostadores relatam que já mentiram para familiares sobre o valor que apostam</div>
+        </div>
+        <div class="fact-card fact-yellow">
+          <div class="fact-number">1 em 3</div>
+          <div class="fact-desc">Apostadores compulsivos desenvolvem sintomas graves de ansiedade ou depressão</div>
+        </div>
+        <div class="fact-card fact-dark">
+          <div class="fact-number">85%</div>
+          <div class="fact-desc">É a porcentagem do dinheiro apostado que os usuários perdem no longo prazo — a casa sempre ganha</div>
+        </div>
+      </div>
+
+      <div class="awareness-cta-block">
+        <div class="cta-text">
+          <h3>Você ou alguém que você conhece precisa de ajuda?</h3>
+          <p>O vício em apostas é reconhecido como doença pela OMS. Tratamento profissional funciona.</p>
+        </div>
+        <div class="cta-links">
+          <a href="https://www.cvv.org.br" target="_blank" class="help-link">CVV — Centro de Valorização da Vida</a>
+          <a href="https://www.jogadoresanonimos.org.br" target="_blank" class="help-link">Jogadores Anônimos Brasil</a>
+          <a href="tel:188" class="help-link help-phone">📞 188 — Disque CVV (gratuito)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERBOARD -->
+  <section class="leaderboard-section">
+    <div class="section-header">
+      <div class="section-tag">RANKING SEMANAL</div>
+      <h2 class="section-title">Melhores previsores da semana</h2>
+      <p class="section-sub">Em BFcoins fictícios — sem prêmios em dinheiro real, jamais.</p>
+    </div>
+    <div class="leaderboard-table">
+      <div class="lb-header">
+        <span>#</span>
+        <span>Usuário</span>
+        <span>Acertos</span>
+        <span>BFcoins</span>
+      </div>
+      <div class="lb-row lb-top">
+        <span class="lb-rank gold">🥇</span>
+        <span class="lb-user"><div class="lb-avatar" style="background:#f59e0b">MR</div> Maria R.</span>
+        <span class="lb-hits">87%</span>
+        <span class="lb-coins">14.320 🪙</span>
+      </div>
+      <div class="lb-row">
+        <span class="lb-rank silver">🥈</span>
+        <span class="lb-user"><div class="lb-avatar" style="background:#6366f1">JP</div> João P.</span>
+        <span class="lb-hits">82%</span>
+        <span class="lb-coins">11.850 🪙</span>
+      </div>
+      <div class="lb-row">
+        <span class="lb-rank bronze">🥉</span>
+        <span class="lb-user"><div class="lb-avatar" style="background:#10b981">AS</div> Ana S.</span>
+        <span class="lb-hits">79%</span>
+        <span class="lb-coins">9.440 🪙</span>
+      </div>
+      <div class="lb-row">
+        <span class="lb-rank">4</span>
+        <span class="lb-user"><div class="lb-avatar" style="background:#ec4899">LC</div> Lucas C.</span>
+        <span class="lb-hits">74%</span>
+        <span class="lb-coins">8.120 🪙</span>
+      </div>
+      <div class="lb-row">
+        <span class="lb-rank">5</span>
+        <span class="lb-user"><div class="lb-avatar" style="background:#0ea5e9">FM</div> Felipe M.</span>
+        <span class="lb-hits">71%</span>
+        <span class="lb-coins">7.290 🪙</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">◈ BetFree</div>
+        <p>Uma plataforma de conscientização sobre apostas. Todas as moedas são fictícias, sem valor monetário real.</p>
+        <div class="footer-warning">
+          ⚠️ Este site NÃO aceita dinheiro real. É uma ferramenta educativa e de suporte para ex-apostadores.
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Plataforma</h4>
+          <a href="#">Mercados</a>
+          <a href="#">Como Funciona</a>
+          <a href="#">Ranking</a>
+          <a href="#">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Apoio</h4>
+          <a href="https://www.jogadoresanonimos.org.br" target="_blank">Jogadores Anônimos</a>
+          <a href="https://www.cvv.org.br" target="_blank">CVV</a>
+          <a href="tel:188">Disque 188</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Termos de Uso</a>
+          <a href="#">Privacidade</a>
+          <a href="#">Sobre o Projeto</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 BetFree. Nenhum dinheiro real é usado ou aceito nesta plataforma.</span>
+      <span class="footer-made">Feito com 💙 para um Brasil mais consciente</span>
+    </div>
+  </footer>
+
+  <!-- MODAL APOSTAR -->
+  <div class="modal-overlay" id="betModal" onclick="closeModal('betModal')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 id="betModalTitle">Fazer Previsão</h3>
+        <button class="modal-close" onclick="closeModal('betModal')">✕</button>
+      </div>
+      <div class="modal-warning">
+        ⚠️ Você está usando <strong>BFcoins fictícios</strong>. Nenhum dinheiro real está envolvido.
+      </div>
+      <div class="modal-body">
+        <p class="modal-question" id="betModalQuestion">Qual será o resultado?</p>
+        <div class="bet-options">
+          <button class="bet-opt bet-yes active" onclick="selectBet('sim')">
+            <span class="opt-label">SIM</span>
+            <span class="opt-odds" id="oddsYes">1.61x</span>
+          </button>
+          <button class="bet-opt bet-no" onclick="selectBet('nao')">
+            <span class="opt-label">NÃO</span>
+            <span class="opt-odds" id="oddsNo">2.63x</span>
+          </button>
+        </div>
+        <div class="bet-amount">
+          <label>Quantidade de BFcoins <span class="coin-balance">Saldo: <strong id="modalBalance">1.000</strong> 🪙</span></label>
+          <div class="amount-input-wrap">
+            <input type="number" id="betAmount" value="100" min="10" max="1000" />
+            <span class="amount-suffix">🪙</span>
+          </div>
+          <div class="amount-quick">
+            <button onclick="setBetAmount(50)">50</button>
+            <button onclick="setBetAmount(100)">100</button>
+            <button onclick="setBetAmount(250)">250</button>
+            <button onclick="setBetAmount(500)">500</button>
+          </div>
+        </div>
+        <div class="bet-summary">
+          <div class="summary-row">
+            <span>Potencial de retorno</span>
+            <span id="potentialReturn" class="return-positive">161 🪙</span>
+          </div>
+        </div>
+        <button class="btn-confirm-bet" onclick="confirmBet()">Confirmar Previsão</button>
+        <p class="modal-disclaimer">Lembre-se: BFcoins não têm valor monetário. Isso é uma simulação educativa.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL LOGIN -->
+  <div class="modal-overlay" id="loginModal" onclick="closeModal('loginModal')">
+    <div class="modal modal-sm" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3>Entrar no BetFree</h3>
+        <button class="modal-close" onclick="closeModal('loginModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" placeholder="seu@email.com" class="form-input" />
+        </div>
+        <div class="form-group">
+          <label>Senha</label>
+          <input type="password" placeholder="••••••••" class="form-input" />
+        </div>
+        <button class="btn-confirm-bet">Entrar</button>
+        <p class="modal-link">Não tem conta? <a onclick="closeModal('loginModal'); openModal('registerModal')">Cadastre-se grátis →</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL REGISTER -->
+  <div class="modal-overlay" id="registerModal" onclick="closeModal('registerModal')">
+    <div class="modal modal-sm" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3>Criar Conta Gratuita</h3>
+        <button class="modal-close" onclick="closeModal('registerModal')">✕</button>
+      </div>
+      <div class="modal-warning">
+        🎁 Você receberá <strong>1.000 BFcoins fictícios</strong> de boas-vindas!
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Nome de usuário</label>
+          <input type="text" placeholder="apostador_consciente" class="form-input" />
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" placeholder="seu@email.com" class="form-input" />
+        </div>
+        <div class="form-group">
+          <label>Senha</label>
+          <input type="password" placeholder="••••••••" class="form-input" />
+        </div>
+        <div class="form-check">
+          <input type="checkbox" id="agreeTerms" />
+          <label for="agreeTerms">Entendo que BetFree usa apenas moedas fictícias sem valor real</label>
+        </div>
+        <button class="btn-confirm-bet" onclick="closeModal('registerModal')">Criar Conta e Receber 1.000 🪙</button>
+        <p class="modal-link">Já tem conta? <a onclick="closeModal('registerModal'); openModal('loginModal')">Entrar →</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}BetFree{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+</head>
+<body>
+
+  <!-- Fundo decorativo -->
+  <div class="auth-bg"></div>
+  <div class="auth-bg-grid"></div>
+
+  <!-- Navbar -->
+  <nav class="auth-nav">
+    <a href="{{ url_for('index') }}" class="nav-logo">
+      <span class="logo-icon">🎯</span>
+      <span class="logo-text">BetFree</span>
+      <span class="logo-badge">Beta</span>
+    </a>
+    {% block nav_action %}{% endblock %}
+  </nav>
+
+  <!-- Conteúdo principal -->
+  <main class="auth-wrapper">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="auth-footer">
+    &copy; 2025 BetFree · Plataforma educacional de mercados de previsão ·
+    <a href="#" style="color: var(--gray-3); text-decoration: none;">Termos</a> ·
+    <a href="#" style="color: var(--gray-3); text-decoration: none;">Privacidade</a>
+  </footer>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>
